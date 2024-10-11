@@ -6,14 +6,13 @@ namespace WhaleApp.Models
     {
         /* General Info */
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a common name.")]
         public string CommonName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a scientific name.")]
         public string ScientificName { get; set; }
 
         public string Description { get; set; }
-
 
         [Range(0, 1000, ErrorMessage = "Lifespan must be between 0 and 1,000 years.")]
         public int Lifespan { get; set; }
