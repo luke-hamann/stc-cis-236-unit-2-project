@@ -1,0 +1,52 @@
+﻿@model Whale
+
+<h1>@Model.CommonName</h1>
+
+@if (Model.ScientificName?.Length > 0)
+{
+    <h2><i>@Model.ScientificName</i></h2>
+}
+
+<p>@Model.Description</p>
+
+<table>
+    <tr>
+        <th>Population</th>
+        <td>@Model.Population</td>
+    </tr>
+    <tr>
+        <th>Conservation Status</th>
+        <td>@Model.ConservationStatus</td>
+    </tr>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th>Ocean</th>
+            <th>Present?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Arctic Ocean</td>
+            <td>@Model.IsInArcticOcean</td>
+        </tr>
+        <tr>
+            <td>Atlantic Ocean</td>
+            <td>@Model.IsInAtlanticOcean</td>
+        </tr>
+        <tr>
+            <td>Indian Ocean</td>
+            <td>@Model.IsInIndianOcean</td>
+        </tr>
+        <tr>
+            <td>Pacific Ocean</td>
+            <td>@Model.IsInPacificOcean</td>
+        </tr>
+        <tr>
+            <td>Southern Ocean</td>
+            <td>@Model.IsInSouthernOcean</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,69 @@
+﻿@model Whale
+
+<form asp-controller="Whale" asp-action="Edit" method="post">
+    <div>
+        <label asp-for="CommonName">Common Name</label>
+        <input asp-for="CommonName" />
+    </div>
+    <div>
+        <label asp-for="ScientificName">Scientific Name</label>
+        <input asp-for="ScientificName" />
+    </div>
+    <div>
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" />
+    </div>
+    <div>
+        <label asp-for="Lifespan">Lifespan</label>
+        <input asp-for="Lifespan" />
+    </div>
+    <div>
+        <label asp-for="MigrationDistance">Migration Distance</label>
+        <input asp-for="MigrationDistance" />
+    </div>
+    <div>
+        <label asp-for="Population">Population</label>
+        <input asp-for="Population" />
+    </div>
+    <div>
+        <label asp-for="ConservationStatus"></label>
+        <select asp-for="ConservationStatus">
+            <option value="0">N/A</option>
+            <option value="7">Least Concern</option>
+            <option value="6">Near Threatened</option>
+            <option value="5">Vulnerable</option>
+            <option value="4">Endangered</option>
+            <option value="3">Critically Endangered</option>
+            <option value="2">Extinct in the Wild</option>
+            <option value="1">Extinct</option>
+        </select>
+    </div>
+    <div>
+        <div>
+            <label>Locations</label>
+        </div>
+        <div>
+            <label asp-for="IsInArcticOcean">Arctic Ocean</label>
+            <input asp-for="IsInArcticOcean" />
+        </div>
+        <div>
+            <label asp-for="IsInAtlanticOcean">Atlantic Ocean</label>
+            <input asp-for="IsInAtlanticOcean" />
+        </div>
+        <div>
+            <label asp-for="IsInIndianOcean">Indian Ocean</label>
+            <input asp-for="IsInIndianOcean" />
+        </div>
+        <div>
+            <label asp-for="IsInPacificOcean">Pacific Ocean</label>
+            <input asp-for="IsInPacificOcean" />
+        </div>
+        <div>
+            <label asp-for="IsInSouthernOcean">Southern Ocean</label>
+            <input asp-for="IsInSouthernOcean" />
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
