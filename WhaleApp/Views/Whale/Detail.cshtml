@@ -36,11 +36,11 @@
     <table class="table">
         <tr>
             <th>Lifespan</th>
-            <td>@Model.Lifespan</td>
+            <td>@Model.Lifespan years</td>
         </tr>
         <tr>
             <th>Migration Distance</th>
-            <td>@Model.MigrationDistance</td>
+            <td>@Model.MigrationDistance miles</td>
         </tr>
         <tr>
             <th>Population</th>
@@ -48,7 +48,9 @@
         </tr>
         <tr>
             <th>Conservation Status</th>
-            <td>@Model.ConservationStatus</td>
+            <td>
+                @ConservationStatus.CodeToString(Model.ConservationStatus!.Value)
+            </td>
         </tr>
     </table>
 </div>
