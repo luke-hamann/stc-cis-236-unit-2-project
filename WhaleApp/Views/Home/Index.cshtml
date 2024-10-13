@@ -31,7 +31,7 @@
                         <td>@whale.CommonName</td>
                         <td>@whale.ScientificName</td>
                         <td>
-                            <a asp-action="Detail" asp-route-id="@whale.Id">
+                            <a asp-action="Detail" asp-route-id="@whale.Id" asp-route-slug="@whale.Slug">
                                 Details
                             </a>
                         </td>

@@ -55,7 +55,7 @@ namespace WhaleApp.Controllers
             {
                 context.Whales.Update(whale);
                 context.SaveChanges();
-                return RedirectToAction("Detail", new { id = whale.Id });
+                return RedirectToAction("Detail", new { id = whale.Id, slug = whale.Slug });
             }
             else
             {

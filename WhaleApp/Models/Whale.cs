@@ -43,5 +43,7 @@ namespace WhaleApp.Models
         public bool IsInPacificOcean { get; set; }
 
         public bool IsInSouthernOcean { get; set; }
+
+        public string Slug => CommonName!.Replace(" ", "-");
     }
 }

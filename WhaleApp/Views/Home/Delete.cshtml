@@ -9,7 +9,7 @@
     <button type="submit" class="btn btn-danger">
         Delete
     </button>
-    <a asp-action="Detail" asp-route-id="@Model.Id" class="btn btn-secondary">
+    <a asp-action="Detail" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug" class="btn btn-secondary">
         Cancel
     </a>
 </form>

@@ -19,10 +19,7 @@
                 @foreach (Whale w in ViewBag.Whales)
                 {
                     <li>
-                        <a
-                            asp-action="Detail"
-                            asp-route-id="@w.Id"
-                            class="list-group-item">
+                        <a asp-action="Detail" asp-route-id="@w.Id" asp-route-slug="@w.Slug" class="list-group-item">
                             @w.CommonName
                         </a>
                     </li>
