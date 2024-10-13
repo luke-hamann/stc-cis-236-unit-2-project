@@ -19,17 +19,17 @@ namespace WhaleApp.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CommonName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ScientificName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ScientificName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Lifespan = table.Column<int>(type: "int", nullable: true),
                     MigrationDistance = table.Column<int>(type: "int", nullable: true),
                     Population = table.Column<int>(type: "int", nullable: true),
                     ConservationStatus = table.Column<int>(type: "int", nullable: true),
-                    IsInArcticOcean = table.Column<bool>(type: "bit", nullable: true),
-                    IsInAtlanticOcean = table.Column<bool>(type: "bit", nullable: true),
-                    IsInIndianOcean = table.Column<bool>(type: "bit", nullable: true),
-                    IsInPacificOcean = table.Column<bool>(type: "bit", nullable: true),
-                    IsInSouthernOcean = table.Column<bool>(type: "bit", nullable: true)
+                    IsInArcticOcean = table.Column<bool>(type: "bit", nullable: false),
+                    IsInAtlanticOcean = table.Column<bool>(type: "bit", nullable: false),
+                    IsInIndianOcean = table.Column<bool>(type: "bit", nullable: false),
+                    IsInPacificOcean = table.Column<bool>(type: "bit", nullable: false),
+                    IsInSouthernOcean = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

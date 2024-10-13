@@ -12,7 +12,7 @@ using WhaleApp.Models;
 namespace WhaleApp.Migrations
 {
     [DbContext(typeof(WhaleContext))]
-    [Migration("20241012001706_Initial")]
+    [Migration("20241013184007_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -43,19 +43,19 @@ namespace WhaleApp.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsInArcticOcean")
+                    b.Property<bool>("IsInArcticOcean")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsInAtlanticOcean")
+                    b.Property<bool>("IsInAtlanticOcean")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsInIndianOcean")
+                    b.Property<bool>("IsInIndianOcean")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsInPacificOcean")
+                    b.Property<bool>("IsInPacificOcean")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsInSouthernOcean")
+                    b.Property<bool>("IsInSouthernOcean")
                         .HasColumnType("bit");
 
                     b.Property<int?>("Lifespan")
@@ -68,7 +68,6 @@ namespace WhaleApp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ScientificName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

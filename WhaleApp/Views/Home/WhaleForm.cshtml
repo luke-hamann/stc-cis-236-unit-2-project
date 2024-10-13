@@ -6,76 +6,75 @@
     }
     else
     {
-        ViewData["Title"] = "Edit " + Model.CommonName;
+        ViewData["Title"] = "Edit Whale";
     }
 }
 
-<form asp-controller="Whale" asp-action="Edit" asp-route-id="@Model.Id" method="post" class="form-horizontal">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <h2 class="mt-3">General Info</h2>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="form-horizontal">
+    <div asp-validation-summary="All" class="row text-danger ms-2">
+    </div>
+
     <div class="row mt-3">
-        <label asp-for="CommonName" class="form-label col-sm-3">
-            Common Name
+        <label asp-for="CommonName" class="form-label col-lg">
+            Common Name*
         </label>
-        <input asp-for="CommonName" class="form-control col" />
+        <input asp-for="CommonName" class="form-control col-lg" />
+        <span class="col-lg"></span>
     </div>
     <div class="row mt-3">
-        <label asp-for="ScientificName" class="form-label col-sm-3">
+        <label asp-for="ScientificName" class="form-label col-lg">
             Scientific Name
         </label>
-        <input asp-for="ScientificName" class="form-control col" />
+        <input asp-for="ScientificName" class="form-control col-lg" />
+        <span class="col-lg"></span>
     </div>
     <div class="row mt-3">
-        <label asp-for="Description" class="form-label col-sm-3">
-            Description
+        <label asp-for="Description" class="form-label">
+            <h2>Description</h2>
         </label>
         <textarea asp-for="Description" class="form-control col">
         </textarea>
     </div>
+
     <h2 class="mt-3">Quick Facts</h2>
     <div class="row mt-3">
-        <label asp-for="Lifespan" class="form-label col-sm-3">
+        <label asp-for="Lifespan" class="form-label col-lg">
             Lifespan
         </label>
-        <input asp-for="Lifespan" class="form-control col" />
+        <input asp-for="Lifespan" class="form-control col-lg" />
+        <span class="col-lg">years</span>
     </div>
     <div class="row mt-3">
-        <label asp-for="MigrationDistance" class="form-label col-sm-3">
+        <label asp-for="MigrationDistance" class="form-label col-lg">
             Migration Distance
         </label>
-        <input asp-for="MigrationDistance" class="form-control col" />
+        <input asp-for="MigrationDistance" class="form-control col-lg" />
+        <span class="col-lg">miles</span>
     </div>
     <div class="row mt-3">
-        <label asp-for="Population" class="form-label col-sm-3">
+        <label asp-for="Population" class="form-label col-lg">
             Population
         </label>
-        <input asp-for="Population" class="form-control col" />
+        <input asp-for="Population" class="form-control col-lg" />
+        <span class="col-lg"></span>
     </div>
     <div class="row mt-3">
-        <label asp-for="ConservationStatus" class="form-label col-sm-3">
+        <label asp-for="ConservationStatus" class="form-label col-lg">
             Conservation Status
         </label>
         <select asp-for="ConservationStatus" class="form-select col">
-            <option value="0">N/A</option>
-            <option value="7">Least Concern</option>
-            <option value="6">Near Threatened</option>
-            <option value="5">Vulnerable</option>
-            <option value="4">Endangered</option>
-            <option value="3">Critically Endangered</option>
-            <option value="2">Extinct in the Wild</option>
-            <option value="1">Extinct</option>
+            @for (var i = 0; i < ConservationStatus.CodeCount; i++)
+            {
+                <option value="@i">
+                    @ConservationStatus.CodeToString(i)
+                </option>
+            }
         </select>
+        <span class="col-lg"></span>
     </div>
+
     <h2 class="mt-3">Locations</h2>
     <table class="table">
-        <tr>
-            <td>
-                <input type="checkbox" asp-for="IsInArcticOcean" />
-                <label asp-for="IsInArcticOcean">
-                    Arctic Ocean
-                </label>
-            </td>
-        </tr>
         <tr>
             <td>
                 <input type="checkbox" asp-for="IsInArcticOcean" />
@@ -121,8 +120,16 @@
 
     <div class="mt-3">
         <input type="submit" value="Submit" class="btn btn-primary" />
-        <a asp-controller="Whale" asp-action="Detail" asp-route-id="@Model.Id" class="btn btn-secondary">
-            Cancel
-        </a>
+        @if (Model.Id == null)
+        {
+            <a asp-action="Index" class="btn btn-secondary">
+                Cancel
+            </a>
+        } else
+        {
+            <a asp-action="Detail" asp-route-id="@Model.Id" class="btn btn-secondary">
+                Cancel
+            </a>
+        }
     </div>
 </form>
