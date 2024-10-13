@@ -8,23 +8,14 @@
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body class="container">
-    <nav class="navbar">
-        <a asp-action="Index" class="navbar-brand">Whale App</a>
-    </nav>
-
-    <div class="row">
-        <nav class="col-sm-3">
+    <div class="row mt-5">
+        <nav class="col-sm-3 mt-3">
             <ul class="list-group list-unstyled">
-                <li>
-                    <a
-                        asp-controller="Home"
-                        asp-action="Index"
-                        class="list-group-item">
-                        Overview
+                <li class="mb-3">
+                    <a asp-controller="Home" asp-action="Index" class="list-group-item">
+                        Home
                     </a>
                 </li>
-            </ul>
-            <ul class="list-group list-unstyled mt-3">
                 @foreach (Whale w in ViewBag.Whales)
                 {
                     <li>
@@ -39,17 +30,20 @@
                 }
             </ul>
         </nav>
-        <div class="col-sm-9">
+        <div class="col-sm-9 mt-3">
             <header>
                 <h1>@ViewData["Title"]</h1>
             </header>
             <main>
                 @RenderBody()
             </main>
-            <footer>
-                <p>&copy; @DateTime.Now.Year Luke Hamann</p>
-            </footer>
         </div>
     </div>
+
+    <footer class="row mt-5">
+        <p>
+            &copy; @DateTime.Now.Year Luke Hamann
+        </p>
+    </footer>
 </body>
 </html>

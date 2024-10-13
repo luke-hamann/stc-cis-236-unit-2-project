@@ -15,9 +15,8 @@ namespace WhaleApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var whales = context.Whales.OrderBy(w => w.CommonName).ToList();
-            ViewBag.Whales = whales;
-            return View(whales);
+            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            return View(ViewBag.Whales);
         }
     }
 }

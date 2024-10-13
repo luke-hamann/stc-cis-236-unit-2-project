@@ -23,7 +23,6 @@ namespace WhaleApp.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewData["Title"] = "Add whale";
             ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
             return View("WhaleForm", new Whale());
         }
@@ -38,7 +37,6 @@ namespace WhaleApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewData["Title"] = "Edit " + whale.CommonName;
             ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
             return View("WhaleForm", whale);
         }
@@ -57,6 +55,22 @@ namespace WhaleApp.Controllers
                 ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
                 return View("WhaleForm", whale);
             }
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            var whale = context.Whales.Find(id);
+            return View("Delete", whale);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Whale whale)
+        {
+            context.Whales.Remove(whale);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

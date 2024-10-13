@@ -1,0 +1,15 @@
+﻿@model Whale
+@{
+    ViewData["Title"] = "Confirm deletion";
+}
+
+<p>Are you sure you want to delete "@Model.CommonName"?</p>
+
+<form asp-controller="Whale" asp-action="Delete" method="post">
+    <button type="submit" class="btn btn-danger">
+        Delete
+    </button>
+    <a asp-controller="Whale" asp-action="Detail" asp-route-id="@Model.Id" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>

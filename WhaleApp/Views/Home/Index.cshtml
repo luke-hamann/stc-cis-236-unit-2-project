@@ -1,20 +1,27 @@
 ﻿@model List<Whale>
 @{
-    ViewData["Title"] = "Overview";
+    ViewData["Title"] = "Whale App";
 }
 
 <p>
     @Model.Count whale(s) have been cataloged.
 </p>
 
+<p>
+    <a asp-controller="Whale" asp-action="Add" class="btn btn-primary">
+        Add Whale
+    </a>
+</p>
+
 @if(Model.Count > 0)
 {
-    <div class="table-container">
+    <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <th>Common Name</th>
                     <th>Scientific Name</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,11 +32,7 @@
                         <td>@whale.ScientificName</td>
                         <td>
                             <a asp-controller="Whale" asp-action="Detail"
-                               asp-route-id="@whale.Id">Detail</a>
-                        </td>
-                        <td>
-                            <a asp-controller="Whale" asp-action="Edit"
-                               asp-route-id="@whale.Id">Edit</a>
+                               asp-route-id="@whale.Id">Details</a>
                         </td>
                     </tr>
                 }

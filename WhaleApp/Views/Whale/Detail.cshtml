@@ -1,52 +1,91 @@
 ﻿@model Whale
-
-<h1>@Model.CommonName</h1>
+@{
+    ViewData["Title"] = Model.CommonName;
+}
 
 @if (Model.ScientificName?.Length > 0)
 {
     <h2><i>@Model.ScientificName</i></h2>
 }
 
-<p>@Model.Description</p>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+        Edit
+    </a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+        Delete
+    </a>
+</p>
 
-<table>
-    <tr>
-        <th>Population</th>
-        <td>@Model.Population</td>
-    </tr>
-    <tr>
-        <th>Conservation Status</th>
-        <td>@Model.ConservationStatus</td>
-    </tr>
-</table>
+<h2>Description</h2>
 
-<table>
-    <thead>
+<p>
+    @if (Model.Description != "")
+    {
+        @Model.Description
+    }
+    else
+    {
+        <i>No description.</i>
+    }
+</p>
+
+<h2>Quick Facts</h2>
+
+<div class="table-responsive">
+    <table class="table">
         <tr>
-            <th>Ocean</th>
-            <th>Present?</th>
+            <th>Lifespan</th>
+            <td>@Model.Lifespan</td>
         </tr>
-    </thead>
+        <tr>
+            <th>Migration Distance</th>
+            <td>@Model.MigrationDistance</td>
+        </tr>
+        <tr>
+            <th>Population</th>
+            <td>@Model.Population</td>
+        </tr>
+        <tr>
+            <th>Conservation Status</th>
+            <td>@Model.ConservationStatus</td>
+        </tr>
+    </table>
+</div>
+
+<h2>Locations</h2>
+
+<table class="table">
     <tbody>
         <tr>
-            <td>Arctic Ocean</td>
-            <td>@Model.IsInArcticOcean</td>
+            <td>
+                <input type="checkbox" disabled @(Model.IsInArcticOcean ? "checked" : "") />
+                <span>Arctic Ocean</span>
+            </td>
         </tr>
         <tr>
-            <td>Atlantic Ocean</td>
-            <td>@Model.IsInAtlanticOcean</td>
+            <td>
+                <input type="checkbox" disabled @(Model.IsInAtlanticOcean ? "checked" : "") />
+                <span>Atlantic Ocean</span>
+            </td>
         </tr>
         <tr>
-            <td>Indian Ocean</td>
-            <td>@Model.IsInIndianOcean</td>
+            <td>
+                <input type="checkbox" disabled @(Model.IsInIndianOcean ? "checked" : "") />
+                <span>Indian Ocean</span>
+            </td>
         </tr>
         <tr>
-            <td>Pacific Ocean</td>
-            <td>@Model.IsInPacificOcean</td>
+            <td>
+                <input type="checkbox" disabled @(Model.IsInPacificOcean ? "checked" : "") />
+                <span>Pacific Ocean</span>
+            </td>
         </tr>
         <tr>
-            <td>Southern Ocean</td>
-            <td>@Model.IsInSouthernOcean</td>
+            <td>
+                <input type="checkbox" disabled @(Model.IsInSouthernOcean ? "checked" : "") />
+                <span>Southern Ocean</span>
+            </td>
         </tr>
     </tbody>
 </table>
