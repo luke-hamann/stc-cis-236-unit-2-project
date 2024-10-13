@@ -32,14 +32,14 @@ namespace WhaleApp.Models
 
         /* Location */
 
-        public bool? IsInArcticOcean { get; set; }
+        public bool IsInArcticOcean { get; set; }
 
-        public bool? IsInAtlanticOcean { get; set; }
+        public bool IsInAtlanticOcean { get; set; }
 
-        public bool? IsInIndianOcean { get; set; }
+        public bool IsInIndianOcean { get; set; }
 
-        public bool? IsInPacificOcean { get; set; }
+        public bool IsInPacificOcean { get; set; }
 
-        public bool? IsInSouthernOcean { get; set; }
+        public bool IsInSouthernOcean { get; set; }
     }
 }

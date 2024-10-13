@@ -10,6 +10,12 @@ builder.Services.AddDbContext<WhaleContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("WhaleContext")));
 
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.AppendTrailingSlash = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

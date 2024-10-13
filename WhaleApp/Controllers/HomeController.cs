@@ -16,6 +16,7 @@ namespace WhaleApp.Controllers
         public IActionResult Index()
         {
             var whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            ViewBag.Whales = whales;
             return View(whales);
         }
     }

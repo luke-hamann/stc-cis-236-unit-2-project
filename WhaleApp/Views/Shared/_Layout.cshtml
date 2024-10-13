@@ -4,10 +4,52 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <main>
-        @RenderBody()
-    </main>
+<body class="container">
+    <nav class="navbar">
+        <a asp-action="Index" class="navbar-brand">Whale App</a>
+    </nav>
+
+    <div class="row">
+        <nav class="col-sm-3">
+            <ul class="list-group list-unstyled">
+                <li>
+                    <a
+                        asp-controller="Home"
+                        asp-action="Index"
+                        class="list-group-item">
+                        Overview
+                    </a>
+                </li>
+            </ul>
+            <ul class="list-group list-unstyled mt-3">
+                @foreach (Whale w in ViewBag.Whales)
+                {
+                    <li>
+                        <a
+                            asp-controller="Whale"
+                            asp-action="Detail"
+                            asp-route-id="@w.Id"
+                            class="list-group-item">
+                            @w.CommonName
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <div class="col-sm-9">
+            <header>
+                <h1>@ViewData["Title"]</h1>
+            </header>
+            <main>
+                @RenderBody()
+            </main>
+            <footer>
+                <p>&copy; @DateTime.Now.Year Luke Hamann</p>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>

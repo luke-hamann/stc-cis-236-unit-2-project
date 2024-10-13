@@ -16,15 +16,31 @@ namespace WhaleApp.Controllers
         public IActionResult Detail(int id)
         {
             var whale = context.Whales.Find(id);
+            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            return View("Detail", whale);
+        }
 
-            return View(whale);
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ViewData["Title"] = "Add whale";
+            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            return View("WhaleForm", new Whale());
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var whale = context.Whales.Find(id);
-            return View(whale);
+            Whale? whale = context.Whales.Find(id);
+
+            if (whale == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ViewData["Title"] = "Edit " + whale.CommonName;
+            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            return View("WhaleForm", whale);
         }
 
         [HttpPost]
@@ -34,11 +50,12 @@ namespace WhaleApp.Controllers
             {
                 context.Whales.Update(whale);
                 context.SaveChanges();
-                return RedirectToAction("Whale", "View", whale.Id);
+                return RedirectToAction("Detail", new { id = whale.Id });
             }
             else
             {
-                return View(whale);
+                ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+                return View("WhaleForm", whale);
             }
         }
     }

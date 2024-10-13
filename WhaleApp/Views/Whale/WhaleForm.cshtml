@@ -1,6 +1,6 @@
 ﻿@model Whale
 
-<form asp-controller="Whale" asp-action="Edit" method="post">
+<form asp-controller="Whale" asp-action="Edit" asp-route-id="@Model.Id" method="post">
     <div>
         <label asp-for="CommonName">Common Name</label>
         <input asp-for="CommonName" />
@@ -44,7 +44,7 @@
         </div>
         <div>
             <label asp-for="IsInArcticOcean">Arctic Ocean</label>
-            <input asp-for="IsInArcticOcean" />
+            <input type="checkbox" asp-for="IsInArcticOcean" />
         </div>
         <div>
             <label asp-for="IsInAtlanticOcean">Atlantic Ocean</label>
