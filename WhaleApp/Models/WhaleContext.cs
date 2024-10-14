@@ -1,4 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//
+// Title: Whale Database Context
+// Purpose: This class provides a database context for storing whales. It also
+//          populates the database with several sample whale species.
+//
+
+using Microsoft.EntityFrameworkCore;
 
 namespace WhaleApp.Models
 {

@@ -1,3 +1,11 @@
+//
+// Title: Home Controller
+// Purpose: This controller provides all the routing of the application,
+//          including the index page, detail page, add page, edit page, and
+//          delete page. It also provides a constructor parameter for recieving
+//          a whale database context and accessing the whale database.
+//
+
 using Microsoft.AspNetCore.Mvc;
 using WhaleApp.Models;
 

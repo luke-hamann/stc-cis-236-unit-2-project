@@ -1,6 +1,8 @@
 ﻿//
 // Title: Conservation Status Class
 // Purpose: This class maps conservation status codes to their descriptions.
+//          The categories are modeled after the IUCN Red List
+//          <https://www.iucnredlist.org/en>.
 //
 
 namespace WhaleApp.Models

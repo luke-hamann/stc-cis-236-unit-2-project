@@ -1,3 +1,11 @@
+//
+// Title: Program.cs
+// Purpose: This file configures, builds, and runs the application. This
+//          includes configuring dependency injection of the whale database
+//          context, enabling lowercase urls with trailing slashes, and
+//          configuring routing to use url slugs.
+//
+
 using Microsoft.EntityFrameworkCore;
 using WhaleApp.Models;
 

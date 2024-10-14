@@ -1,8 +1,10 @@
 ﻿//
 // Title: Whale Class
-// Purpose: This is a class for representing a species of whale, including an
-//          id, common name, scientific name, description, lifespan, migration
-//          distance, population, and what oceans the species is located in.
+// Purpose: This class represents a species of whale, including an id, common
+//          name, scientific name, description, lifespan, migration distance,
+//          population, conservation status, and which oceans the species is
+//          found in. It also has a read-only property for generating a url slug
+//          based on the common name.
 //
 
 using System.ComponentModel.DataAnnotations;
@@ -12,8 +14,6 @@ namespace WhaleApp.Models
     public class Whale
     {
         public int? Id { get; set; }
-
-        /* General Info */
 
         [Required(ErrorMessage = "Please enter a common name.")]
         public string? CommonName { get; set; }
