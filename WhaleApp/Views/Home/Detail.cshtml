@@ -25,16 +25,15 @@
 
 <h2>Description</h2>
 
-<p style="white-space: pre-wrap;">
-    @if (Model.Description != "")
-    {
-        @Model.Description
-    }
-    else
-    {
-        <i>No description.</i>
-    }
-</p>
+
+@if (Model.Description == null || Model.Description == "")
+{
+    <p><i>No description.</i></p>
+}
+else
+{
+    <p style="white-space: pre-wrap;">@Model.Description</p>
+}
 
 <h2>Quick Facts</h2>
 
