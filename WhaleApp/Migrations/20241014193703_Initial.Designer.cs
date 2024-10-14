@@ -12,7 +12,7 @@ using WhaleApp.Models;
 namespace WhaleApp.Migrations
 {
     [DbContext(typeof(WhaleContext))]
-    [Migration("20241013184007_Initial")]
+    [Migration("20241014193703_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -96,7 +96,7 @@ namespace WhaleApp.Migrations
                             Id = 2,
                             CommonName = "Humpback whale",
                             ConservationStatus = 5,
-                            Description = "integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam\r\n",
+                            Description = "integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam",
                             IsInArcticOcean = false,
                             IsInAtlanticOcean = true,
                             IsInIndianOcean = true,
@@ -112,7 +112,7 @@ namespace WhaleApp.Migrations
                             Id = 3,
                             CommonName = "Fin whale",
                             ConservationStatus = 3,
-                            Description = "aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam\r\n",
+                            Description = "aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam",
                             IsInArcticOcean = true,
                             IsInAtlanticOcean = true,
                             IsInIndianOcean = true,
@@ -128,7 +128,7 @@ namespace WhaleApp.Migrations
                             Id = 4,
                             CommonName = "Beluga whale",
                             ConservationStatus = 3,
-                            Description = "aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio\r\n",
+                            Description = "aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio",
                             IsInArcticOcean = false,
                             IsInAtlanticOcean = true,
                             IsInIndianOcean = true,
@@ -144,7 +144,7 @@ namespace WhaleApp.Migrations
                             Id = 5,
                             CommonName = "Sperm whale",
                             ConservationStatus = 6,
-                            Description = "morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis\r\n",
+                            Description = "morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis",
                             IsInArcticOcean = false,
                             IsInAtlanticOcean = false,
                             IsInIndianOcean = false,

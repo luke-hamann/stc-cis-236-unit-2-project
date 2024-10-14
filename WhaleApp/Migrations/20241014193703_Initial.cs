@@ -42,10 +42,10 @@ namespace WhaleApp.Migrations
                 values: new object[,]
                 {
                     { 1, "Blue whale", 2, "odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor", true, false, true, true, false, 241, 874, 7270, "Heloderma horridum" },
-                    { 2, "Humpback whale", 5, "integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam\r\n", false, true, true, true, false, 105, 7575, 4143, "Phalaropus lobatus" },
-                    { 3, "Fin whale", 3, "aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam\r\n", true, true, true, false, false, 379, 9548, 2956, "Limosa haemastica" },
-                    { 4, "Beluga whale", 3, "aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio\r\n", false, true, true, false, true, 624, 9180, 8286, "Mycteria leucocephala" },
-                    { 5, "Sperm whale", 6, "morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis\r\n", false, false, false, true, false, 957, 5765, 831, "Bassariscus astutus" }
+                    { 2, "Humpback whale", 5, "integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam", false, true, true, true, false, 105, 7575, 4143, "Phalaropus lobatus" },
+                    { 3, "Fin whale", 3, "aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam", true, true, true, false, false, 379, 9548, 2956, "Limosa haemastica" },
+                    { 4, "Beluga whale", 3, "aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio", false, true, true, false, true, 624, 9180, 8286, "Mycteria leucocephala" },
+                    { 5, "Sperm whale", 6, "morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis", false, false, false, true, false, 957, 5765, 831, "Bassariscus astutus" }
                 });
         }
 
