@@ -49,7 +49,7 @@ else
         </tr>
         <tr>
             <th>Population</th>
-            <td>@Model.Population</td>
+            <td>@Model.Population?.ToString("n0")</td>
         </tr>
         <tr>
             <th>Conservation Status</th>
