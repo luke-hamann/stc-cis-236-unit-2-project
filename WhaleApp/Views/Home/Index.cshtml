@@ -16,7 +16,7 @@
 
 <p>
     <a asp-action="Add" class="btn btn-primary">
-        Add Whale
+        🐳 Add Whale
     </a>
 </p>
 
@@ -38,7 +38,7 @@
                         <td>@whale.CommonName</td>
                         <td>@whale.ScientificName</td>
                         <td>
-                            <a asp-action="Detail" asp-route-id="@whale.Id" asp-route-slug="@whale.Slug">
+                            <a asp-action="Detail" asp-route-id="@whale.Id" asp-route-slug="@whale.Slug" class="btn btn-outline-secondary">
                                 Details
                             </a>
                         </td>
