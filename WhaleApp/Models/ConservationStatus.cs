@@ -9,6 +9,8 @@ namespace WhaleApp.Models
 {
     public static class ConservationStatus
     {
+        public const int CodeCount = 8;
+
         public static string CodeToString(int code)
         {
             return code switch
@@ -23,14 +25,6 @@ namespace WhaleApp.Models
                 7 => "Least Concern",
                 _ => "",
             };
-        }
-
-        public static int CodeCount
-        {
-            get
-            {
-                return 8;
-            }
         }
     }
 }
