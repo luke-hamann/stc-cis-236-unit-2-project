@@ -13,17 +13,22 @@ namespace WhaleApp.Controllers
 {
     public class HomeController : Controller
     {
-        private WhaleContext context;
+        private WhaleContext context { get; set; }
 
         public HomeController(WhaleContext context)
         {
             this.context = context;
         }
 
+        private List<Whale> GetAllWhales()
+        {
+            return context.Whales.OrderBy(w => w.CommonName!.ToLower()).ToList();
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            ViewBag.Whales = GetAllWhales();
             return View(ViewBag.Whales);
         }
 
@@ -31,28 +36,34 @@ namespace WhaleApp.Controllers
         public IActionResult Detail(int id)
         {
             var whale = context.Whales.Find(id);
-            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+
+            if (whale == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Whales = GetAllWhales();
             return View("Detail", whale);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            ViewBag.Whales = GetAllWhales();
             return View("WhaleForm", new Whale());
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Whale? whale = context.Whales.Find(id);
+            var whale = context.Whales.Find(id);
 
             if (whale == null)
             {
-                return RedirectToAction("Index");
+                return NotFound();
             }
 
-            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+            ViewBag.Whales = GetAllWhales();
             return View("WhaleForm", whale);
         }
 
@@ -61,13 +72,21 @@ namespace WhaleApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Whales.Update(whale);
+                if (whale.Id == 0)
+                {
+                    context.Whales.Add(whale);
+                }
+                else
+                {
+                    context.Whales.Update(whale);
+                }
+
                 context.SaveChanges();
                 return RedirectToAction("Detail", new { id = whale.Id, slug = whale.Slug });
             }
             else
             {
-                ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
+                ViewBag.Whales = GetAllWhales();
                 return View("WhaleForm", whale);
             }
         }
@@ -75,8 +94,14 @@ namespace WhaleApp.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            ViewBag.Whales = context.Whales.OrderBy(w => w.CommonName).ToList();
             var whale = context.Whales.Find(id);
+
+            if (whale == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Whales = GetAllWhales();
             return View("Delete", whale);
         }
 
@@ -85,7 +110,7 @@ namespace WhaleApp.Controllers
         {
             context.Whales.Remove(whale);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
     }
 }
