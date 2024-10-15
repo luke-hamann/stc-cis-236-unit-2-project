@@ -8,13 +8,16 @@
     ViewData["Title"] = "Confirm Deletion";
 }
 
-<p>Are you sure you want to delete "@Model.CommonName"?</p>
-
 <form asp-action="Delete" method="post">
-    <button type="submit" class="btn btn-danger">
-        Delete
-    </button>
-    <a asp-action="Detail" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug" class="btn btn-secondary">
-        Cancel
-    </a>
+    <p>
+        Are you sure you want to delete "@Model.CommonName"?
+    </p>
+    <div>
+        <button type="submit" class="btn btn-danger">
+            Delete
+        </button>
+        <a asp-action="Detail" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug" class="btn btn-secondary">
+            Cancel
+        </a>
+    </div>
 </form>
