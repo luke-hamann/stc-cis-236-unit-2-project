@@ -25,7 +25,7 @@ namespace WhaleApp.Models
         [Range(0, 1000, ErrorMessage = "Lifespan must be between 0 and 1,000 years.")]
         public int? Lifespan { get; set; }
 
-        [Range(0, 50000, ErrorMessage = "Migration distance must be between 0 and 10,000 miles.")]
+        [Range(0, 10000, ErrorMessage = "Migration distance must be between 0 and 10,000 miles.")]
         public int? MigrationDistance { get; set; }
 
         [Range(0, 1000000, ErrorMessage = "Population must be between 0 and 1,000,000.")]
