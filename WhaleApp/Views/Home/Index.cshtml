@@ -11,7 +11,9 @@
 }
 
 <p>
-    @Model.Count whale(s) have been cataloged.
+    @Model.Count
+    @(Model.Count == 1 ? "whale has" : "whales have")
+    been cataloged.
 </p>
 
 <p>
