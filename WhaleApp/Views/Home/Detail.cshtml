@@ -1,7 +1,7 @@
 ﻿@*
     Title: Detail View
-    Purpose: This page lists all of the information stored about a given whale
-             species. It also has buttons for editing or deleting the species.
+    Purpose: This page lists all of the information stored about a given whale.
+             It also has buttons for editing or deleting the whale.
 *@
 
 @model Whale
@@ -9,7 +9,7 @@
     ViewData["Title"] = Model.CommonName;
 }
 
-@if (Model.ScientificName?.Length > 0)
+@if (Model.ScientificName != null)
 {
     <h2><i>@Model.ScientificName</i></h2>
 }
@@ -25,8 +25,7 @@
 
 <h2>Description</h2>
 
-
-@if (Model.Description == null || Model.Description == "")
+@if (Model.Description == null)
 {
     <p><i>No description.</i></p>
 }
@@ -41,11 +40,15 @@ else
     <table class="table">
         <tr>
             <th>Lifespan</th>
-            <td>@Model.Lifespan years</td>
+            <td>
+                @(Model.Lifespan.HasValue ? Model.Lifespan.Value.ToString("n0") + " years" : "")
+            </td>
         </tr>
         <tr>
             <th>Migration Distance</th>
-            <td>@Model.MigrationDistance miles</td>
+            <td>
+                @(Model.MigrationDistance.HasValue ? Model.MigrationDistance.Value.ToString("n0") + " miles" : "")
+            </td>
         </tr>
         <tr>
             <th>Population</th>
