@@ -1,8 +1,8 @@
 ﻿@*
     Title: Base Layout
-    Purpose: This provides a base layout for all views. It includes the
-             necessary elements to enable Bootstrap, a navigation sidebar, slots
-             for the page title, a slot for the main content, and a footer.
+    Purpose: This provides a base layout for all views. It includes elements to
+             enable Bootstrap, a navigation sidebar, slots for the page title, a
+             slot for the main content, and a footer.
 *@
 <!DOCTYPE html>
 <html lang="en-us">
@@ -18,14 +18,14 @@
         <nav class="col-sm-3 mt-3">
             <ul class="list-group list-unstyled">
                 <li class="mb-3">
-                    <a asp-action="Index" class="list-group-item">
+                    <a asp-controller="Home" asp-action="Index" class="list-group-item">
                         🏠 Home
                     </a>
                 </li>
                 @foreach (Whale w in ViewBag.Whales)
                 {
                     <li class="d-none d-sm-block">
-                        <a asp-action="Detail" asp-route-id="@w.Id" asp-route-slug="@w.Slug" class="list-group-item">
+                        <a asp-controller="Home" asp-action="Detail" asp-route-id="@w.Id" asp-route-slug="@w.Slug" class="list-group-item">
                             @w.CommonName
                         </a>
                     </li>
@@ -41,7 +41,6 @@
             </main>
         </div>
     </div>
-
     <footer class="row mt-5">
         <p>
             &copy; @DateTime.Now.Year Luke Hamann
