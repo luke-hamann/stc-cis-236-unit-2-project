@@ -6,11 +6,11 @@
 
 @model Whale
 @{
-    ViewData["Title"] = (Model.Id == null ? "Add" : "Edit") + " Whale";
+    ViewData["Title"] = (Model.Id == 0 ? "Add" : "Edit") + " Whale";
 }
 
-<form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="form-horizontal">
-    <div asp-validation-summary="All" class="row text-danger mt-3 ms-2">
+<form asp-action="Edit" method="post" class="form-horizontal">
+    <div asp-validation-summary="All" class="row mt-3 ms-3 text-danger">
     </div>
 
     <div class="row mt-3">
