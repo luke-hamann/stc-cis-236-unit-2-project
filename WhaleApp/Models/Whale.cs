@@ -31,8 +31,9 @@ namespace WhaleApp.Models
         [Range(0, 1000000, ErrorMessage = "Population must be between 0 and 1,000,000.")]
         public int? Population { get; set; }
 
-        [Range(0, 7, ErrorMessage = "Invalid conservation status.")]
-        public int? ConservationStatus { get; set; }
+        public int? ConservationStatusId { get; set; }
+
+        public ConservationStatus? ConservationStatus { get; set; }
 
         public bool IsInArcticOcean { get; set; }
 

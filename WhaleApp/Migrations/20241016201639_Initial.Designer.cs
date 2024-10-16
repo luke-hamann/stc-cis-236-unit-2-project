@@ -12,7 +12,7 @@ using WhaleApp.Models;
 namespace WhaleApp.Migrations
 {
     [DbContext(typeof(WhaleContext))]
-    [Migration("20241014193703_Initial")]
+    [Migration("20241016201639_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -24,6 +24,60 @@ namespace WhaleApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("WhaleApp.Models.ConservationStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ConservationStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Extinct"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Extinct in the Wild"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Critically Endangered"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Endangered"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Vulnerable"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Near Threatened"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Least Concern"
+                        });
+                });
 
             modelBuilder.Entity("WhaleApp.Models.Whale", b =>
                 {
@@ -37,7 +91,7 @@ namespace WhaleApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ConservationStatus")
+                    b.Property<int?>("ConservationStatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -72,6 +126,8 @@ namespace WhaleApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ConservationStatusId");
+
                     b.ToTable("Whales");
 
                     b.HasData(
@@ -79,7 +135,7 @@ namespace WhaleApp.Migrations
                         {
                             Id = 1,
                             CommonName = "Blue whale",
-                            ConservationStatus = 2,
+                            ConservationStatusId = 2,
                             Description = "odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor",
                             IsInArcticOcean = true,
                             IsInAtlanticOcean = false,
@@ -95,7 +151,7 @@ namespace WhaleApp.Migrations
                         {
                             Id = 2,
                             CommonName = "Humpback whale",
-                            ConservationStatus = 5,
+                            ConservationStatusId = 5,
                             Description = "integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam",
                             IsInArcticOcean = false,
                             IsInAtlanticOcean = true,
@@ -111,7 +167,7 @@ namespace WhaleApp.Migrations
                         {
                             Id = 3,
                             CommonName = "Fin whale",
-                            ConservationStatus = 3,
+                            ConservationStatusId = 3,
                             Description = "aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam",
                             IsInArcticOcean = true,
                             IsInAtlanticOcean = true,
@@ -127,7 +183,7 @@ namespace WhaleApp.Migrations
                         {
                             Id = 4,
                             CommonName = "Beluga whale",
-                            ConservationStatus = 3,
+                            ConservationStatusId = 3,
                             Description = "aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio",
                             IsInArcticOcean = false,
                             IsInAtlanticOcean = true,
@@ -143,7 +199,7 @@ namespace WhaleApp.Migrations
                         {
                             Id = 5,
                             CommonName = "Sperm whale",
-                            ConservationStatus = 6,
+                            ConservationStatusId = 6,
                             Description = "morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis",
                             IsInArcticOcean = false,
                             IsInAtlanticOcean = false,
@@ -155,6 +211,15 @@ namespace WhaleApp.Migrations
                             Population = 831,
                             ScientificName = "Bassariscus astutus"
                         });
+                });
+
+            modelBuilder.Entity("WhaleApp.Models.Whale", b =>
+                {
+                    b.HasOne("WhaleApp.Models.ConservationStatus", "ConservationStatus")
+                        .WithMany()
+                        .HasForeignKey("ConservationStatusId");
+
+                    b.Navigation("ConservationStatus");
                 });
 #pragma warning restore 612, 618
         }

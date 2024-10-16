@@ -57,7 +57,7 @@ else
         <tr>
             <th>Conservation Status</th>
             <td>
-                @ConservationStatus.CodeToString(Model.ConservationStatus!.Value)
+                @(Model.ConservationStatus == null ? "N/A" : Model.ConservationStatus.Name)
             </td>
         </tr>
     </table>

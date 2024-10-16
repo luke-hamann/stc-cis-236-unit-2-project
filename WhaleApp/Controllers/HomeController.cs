@@ -7,6 +7,7 @@
 //
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WhaleApp.Models;
 
 namespace WhaleApp.Controllers
@@ -22,7 +23,13 @@ namespace WhaleApp.Controllers
 
         private List<Whale> GetAllWhales()
         {
-            return context.Whales.OrderBy(w => w.CommonName!.ToLower()).ToList();
+            return context.Whales.OrderBy(w => w.CommonName!.ToLower())
+                .ToList();
+        }
+
+        private List<ConservationStatus> GetAllConservationStatuses()
+        {
+            return context.ConservationStatuses.OrderBy(c => c.Id).ToList();
         }
 
         [HttpGet]
@@ -35,7 +42,8 @@ namespace WhaleApp.Controllers
         [HttpGet]
         public IActionResult Detail(int id)
         {
-            var whale = context.Whales.Find(id);
+            var whale = context.Whales.Include(w => w.ConservationStatus)
+                .Where(w => w.Id == id).FirstOrDefault();
 
             if (whale == null)
             {
@@ -50,6 +58,7 @@ namespace WhaleApp.Controllers
         public IActionResult Add()
         {
             ViewBag.Whales = GetAllWhales();
+            ViewBag.ConservationStatuses = GetAllConservationStatuses();
             return View("WhaleForm", new Whale());
         }
 
@@ -64,6 +73,7 @@ namespace WhaleApp.Controllers
             }
 
             ViewBag.Whales = GetAllWhales();
+            ViewBag.ConservationStatuses = GetAllConservationStatuses();
             return View("WhaleForm", whale);
         }
 
@@ -82,11 +92,13 @@ namespace WhaleApp.Controllers
                 }
 
                 context.SaveChanges();
-                return RedirectToAction("Detail", new { id = whale.Id, slug = whale.Slug });
+                return RedirectToAction("Detail",
+                    new { id = whale.Id, slug = whale.Slug });
             }
             else
             {
                 ViewBag.Whales = GetAllWhales();
+                ViewBag.ConservationStatuses = GetAllConservationStatuses();
                 return View("WhaleForm", whale);
             }
         }

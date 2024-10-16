@@ -13,6 +13,19 @@ namespace WhaleApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "ConservationStatuses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConservationStatuses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Whales",
                 columns: table => new
                 {
@@ -24,7 +37,7 @@ namespace WhaleApp.Migrations
                     Lifespan = table.Column<int>(type: "int", nullable: true),
                     MigrationDistance = table.Column<int>(type: "int", nullable: true),
                     Population = table.Column<int>(type: "int", nullable: true),
-                    ConservationStatus = table.Column<int>(type: "int", nullable: true),
+                    ConservationStatusId = table.Column<int>(type: "int", nullable: true),
                     IsInArcticOcean = table.Column<bool>(type: "bit", nullable: false),
                     IsInAtlanticOcean = table.Column<bool>(type: "bit", nullable: false),
                     IsInIndianOcean = table.Column<bool>(type: "bit", nullable: false),
@@ -34,11 +47,30 @@ namespace WhaleApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Whales", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Whales_ConservationStatuses_ConservationStatusId",
+                        column: x => x.ConservationStatusId,
+                        principalTable: "ConservationStatuses",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "ConservationStatuses",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Extinct" },
+                    { 2, "Extinct in the Wild" },
+                    { 3, "Critically Endangered" },
+                    { 4, "Endangered" },
+                    { 5, "Vulnerable" },
+                    { 6, "Near Threatened" },
+                    { 7, "Least Concern" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Whales",
-                columns: new[] { "Id", "CommonName", "ConservationStatus", "Description", "IsInArcticOcean", "IsInAtlanticOcean", "IsInIndianOcean", "IsInPacificOcean", "IsInSouthernOcean", "Lifespan", "MigrationDistance", "Population", "ScientificName" },
+                columns: new[] { "Id", "CommonName", "ConservationStatusId", "Description", "IsInArcticOcean", "IsInAtlanticOcean", "IsInIndianOcean", "IsInPacificOcean", "IsInSouthernOcean", "Lifespan", "MigrationDistance", "Population", "ScientificName" },
                 values: new object[,]
                 {
                     { 1, "Blue whale", 2, "odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor", true, false, true, true, false, 241, 874, 7270, "Heloderma horridum" },
@@ -47,6 +79,11 @@ namespace WhaleApp.Migrations
                     { 4, "Beluga whale", 3, "aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio", false, true, true, false, true, 624, 9180, 8286, "Mycteria leucocephala" },
                     { 5, "Sperm whale", 6, "morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis", false, false, false, true, false, 957, 5765, 831, "Bassariscus astutus" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Whales_ConservationStatusId",
+                table: "Whales",
+                column: "ConservationStatusId");
         }
 
         /// <inheritdoc />
@@ -54,6 +91,9 @@ namespace WhaleApp.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Whales");
+
+            migrationBuilder.DropTable(
+                name: "ConservationStatuses");
         }
     }
 }

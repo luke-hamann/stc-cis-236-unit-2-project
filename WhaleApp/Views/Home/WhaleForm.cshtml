@@ -1,8 +1,7 @@
 ﻿@*
     Title: Whale Form
     Purpose: This page provides a form for adding or editing a whale. It
-             contains inputs that map to each of the properties of the Whale
-             class (except Id).
+             contains inputs that map to the properties of the Whale class.
 *@
 
 @model Whale
@@ -60,14 +59,16 @@
         <span class="col-lg"></span>
     </div>
     <div class="row mt-3">
-        <label asp-for="ConservationStatus" class="form-label col-lg">
+        <label asp-for="ConservationStatusId" class="form-label col-lg">
             Conservation Status
         </label>
-        <select asp-for="ConservationStatus" class="form-select col-lg">
-            @for (int i = 0; i < ConservationStatus.CodeCount; i++)
-            {
-                <option value="@i">
-                    @ConservationStatus.CodeToString(i)
+        <select asp-for="ConservationStatusId" class="form-select col-lg">
+            <option value="">
+                N/A
+            </option>
+            @foreach (var c in ViewBag.ConservationStatuses) {
+                <option value="@c.Id">
+                    @c.Name
                 </option>
             }
         </select>

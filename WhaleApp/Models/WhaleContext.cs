@@ -1,7 +1,9 @@
 ﻿//
 // Title: Whale Database Context
-// Purpose: This class provides a database context for storing whales. It also
-//          populates the database with several sample whale species.
+// Purpose: This class provides a database context for storing whales and
+//          conservation statuses. It also populates the database with sample
+//          data. (The statuses are modeled after the IUCN Red List
+//          <https://www.iucnredlist.org/en>.)
 //
 
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +18,49 @@ namespace WhaleApp.Models
 
         public DbSet<Whale> Whales { get; set; }
 
+        public DbSet<ConservationStatus> ConservationStatuses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ConservationStatus>().HasData(
+                new ConservationStatus
+                {
+                    Id = 1,
+                    Name = "Extinct"
+                },
+                new ConservationStatus
+                {
+                    Id = 2,
+                    Name = "Extinct in the Wild"
+                },
+                new ConservationStatus
+                {
+                    Id = 3,
+                    Name = "Critically Endangered"
+                },
+                new ConservationStatus
+                {
+                    Id = 4,
+                    Name = "Endangered"
+                },
+                new ConservationStatus
+                {
+                    Id = 5,
+                    Name = "Vulnerable"
+                },
+                new ConservationStatus
+                {
+                    Id = 6,
+                    Name = "Near Threatened"
+                },
+                new ConservationStatus
+                {
+                    Id = 7,
+                    Name = "Least Concern"
+                }
+            );
 
             modelBuilder.Entity<Whale>().HasData(
                 new Whale
@@ -30,7 +72,7 @@ namespace WhaleApp.Models
                     Lifespan = 241,
                     MigrationDistance = 874,
                     Population = 7270,
-                    ConservationStatus = 2,
+                    ConservationStatusId = 2,
                     IsInArcticOcean = true,
                     IsInAtlanticOcean = false,
                     IsInIndianOcean = true,
@@ -46,7 +88,7 @@ namespace WhaleApp.Models
                     Lifespan = 105,
                     MigrationDistance = 7575,
                     Population = 4143,
-                    ConservationStatus = 5,
+                    ConservationStatusId = 5,
                     IsInArcticOcean = false,
                     IsInAtlanticOcean = true,
                     IsInIndianOcean = true,
@@ -62,7 +104,7 @@ namespace WhaleApp.Models
                     Lifespan = 379,
                     MigrationDistance = 9548,
                     Population = 2956,
-                    ConservationStatus = 3,
+                    ConservationStatusId = 3,
                     IsInArcticOcean = true,
                     IsInAtlanticOcean = true,
                     IsInIndianOcean = true,
@@ -78,7 +120,7 @@ namespace WhaleApp.Models
                     Lifespan = 624,
                     MigrationDistance = 9180,
                     Population = 8286,
-                    ConservationStatus = 3,
+                    ConservationStatusId = 3,
                     IsInArcticOcean = false,
                     IsInAtlanticOcean = true,
                     IsInIndianOcean = true,
@@ -94,7 +136,7 @@ namespace WhaleApp.Models
                     Lifespan = 957,
                     MigrationDistance = 5765,
                     Population = 831,
-                    ConservationStatus = 6,
+                    ConservationStatusId = 6,
                     IsInArcticOcean = false,
                     IsInAtlanticOcean = false,
                     IsInIndianOcean = false,
