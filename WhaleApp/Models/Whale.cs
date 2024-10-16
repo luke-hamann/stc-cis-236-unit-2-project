@@ -13,7 +13,7 @@ namespace WhaleApp.Models
 {
     public class Whale
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter a common name.")]
         public string? CommonName { get; set; }
