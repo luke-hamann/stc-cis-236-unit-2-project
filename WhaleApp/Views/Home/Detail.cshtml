@@ -38,28 +38,30 @@ else
 
 <div class="table-responsive">
     <table class="table">
-        <tr>
-            <th>Lifespan</th>
-            <td>
-                @(Model.Lifespan.HasValue ? Model.Lifespan.Value.ToString("n0") + " years" : "")
-            </td>
-        </tr>
-        <tr>
-            <th>Migration Distance</th>
-            <td>
-                @(Model.MigrationDistance.HasValue ? Model.MigrationDistance.Value.ToString("n0") + " miles" : "")
-            </td>
-        </tr>
-        <tr>
-            <th>Population</th>
-            <td>@Model.Population?.ToString("n0")</td>
-        </tr>
-        <tr>
-            <th>Conservation Status</th>
-            <td>
-                @(Model.ConservationStatus == null ? "N/A" : Model.ConservationStatus.Name)
-            </td>
-        </tr>
+        <tbody>
+            <tr>
+                <th>Lifespan</th>
+                <td>
+                    @(Model.Lifespan.HasValue ? Model.Lifespan.Value.ToString("n0") + " years" : "")
+                </td>
+            </tr>
+            <tr>
+                <th>Migration Distance</th>
+                <td>
+                    @(Model.MigrationDistance.HasValue ? Model.MigrationDistance.Value.ToString("n0") + " miles" : "")
+                </td>
+            </tr>
+            <tr>
+                <th>Population</th>
+                <td>@Model.Population?.ToString("n0")</td>
+            </tr>
+            <tr>
+                <th>Conservation Status</th>
+                <td>
+                    @(Model.ConservationStatus == null ? "N/A" : Model.ConservationStatus.Name)
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>
 
